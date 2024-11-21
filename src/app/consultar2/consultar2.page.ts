@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { home } from 'ionicons/icons';
 
 import { StorageService } from 'src/app/storage.service'; //NUEVO
 
@@ -66,9 +68,13 @@ export class Consultar2Page implements OnInit {
 
     });
 
-
+      //inicio codigo para icono
+      addIcons({'home': home})
+      //fin codigo para icono
 
   }  // Fin constructor
+
+
 
   Tohome2() {
     this.router.navigate(['home2'], { queryParams: {} });

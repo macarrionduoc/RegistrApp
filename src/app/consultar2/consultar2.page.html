@@ -1,4 +1,19 @@
+<!--Barra de título-->
+<ion-header [translucent]="true">
+  <ion-toolbar class="registro-toolbar" color="primary">
+    <ion-title class="ion-text-center">LISTA DE ALUMNOS</ion-title>
+    <!--inicio codigo para inscrustar icono en la barra-->
+    <ion-buttons slot="end">
+      <ion-button (click)="Tohome2()">
+        <ion-icon name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!--fin codigo para inscrustar icono en la barra-->
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
+  <!--
   <div class="logo-container">
     <img
       #logo
@@ -13,7 +28,7 @@
   </div>
 
   <br />
-
+-->
   <!-- INICIO FORMULARIO PARA CRUD - NUEVO -->
   <ion-content [fullscreen]="true">
     <ion-card>
@@ -124,13 +139,13 @@
         >
           Debes ingresar tu carrera
         </div>
-
+<!--
         <ion-grid *ngIf="mensajeExitoso">
           <ion-row>
             <ion-col class="alerta-exito"> Registro Exitoso </ion-col>
           </ion-row>
         </ion-grid>
-
+-->
         <ion-grid *ngIf="mensajeError">
           <ion-row>
             <ion-col class="alerta-error"> Registro Invalido </ion-col>
@@ -209,5 +224,4 @@ BOTONES ORIGINALES DEL CRUD -->
         >Ir a home</ion-button
       >
     </div>
-  </ion-content></ion-content
->
+  </ion-content>
