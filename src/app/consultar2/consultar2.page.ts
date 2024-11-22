@@ -169,7 +169,7 @@ export class Consultar2Page implements OnInit {
   }// fin eliminar
 
   async buscar(id: any) {
-    let registroEncontrado = await this.storageservice.obtenerDato('personas', id)
+    let registroEncontrado = await this.storageservice.obtenerDato('personas', id);
 
     if (registroEncontrado) {
 
