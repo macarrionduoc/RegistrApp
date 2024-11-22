@@ -16,6 +16,7 @@ interface Persona {
   edad: string;
   correo: string;
   carrera: string;
+  contraseña: string;
   identificador: string
 }
 //FIN INTERFACE - NUEVO
@@ -43,6 +44,7 @@ export class Consultar2Page implements OnInit {
   correo: string = ""
   edad = ""
   carrera: any = ''
+  contraseña: string = ""
 
   // Variables para leer parametros
   par_username: string = "";
@@ -64,7 +66,8 @@ export class Consultar2Page implements OnInit {
       rut: ['', [Validators.required, Validators.minLength(3)]],
       edad: ['', [Validators.required, Validators.minLength(2)]],
       correo: ['', [Validators.required, Validators.minLength(3), Validators.email]],
-      carrera: ['', [Validators.required]]
+      carrera: ['', [Validators.required]],
+      contraseña: ['', [Validators.required, Validators.minLength(3)]]
 
     });
 
@@ -119,6 +122,7 @@ export class Consultar2Page implements OnInit {
         edad: this.registroForm.value.edad,
         correo: this.registroForm.value.correo,
         carrera: this.registroForm.value.carrera,
+        contraseña: this.registroForm.value.contraseña,
         identificador: Date.now().toString()  // Genera un identificador unico 
       }
 
@@ -144,12 +148,11 @@ export class Consultar2Page implements OnInit {
       this.edad = "";
       this.correo = "";
       this.carrera = "";
+      this.contraseña = "";
 
     } else {
       this.mensajeError = true
       this.mensajeExitoso = false
-
-
     }
 
   } // fin agregar
@@ -166,6 +169,20 @@ export class Consultar2Page implements OnInit {
     await this.storageservice.eliminar('personas', id);
     await this.listar();
 
+
+    await this.storageservice.actualizar('personas', id)
+    await this.listar();
+    this.registroForm.reset()
+    // limpieza
+    this.nombre = "";
+    this.apellido = "";
+    this.rut = "";
+    this.edad = "";
+    this.correo = "";
+    this.carrera = "";
+    this.contraseña = "";
+
+
   }// fin eliminar
 
   async buscar(id: any) {
@@ -178,10 +195,11 @@ export class Consultar2Page implements OnInit {
                                     rut: registroEncontrado.rut, 
                                     edad: registroEncontrado.edad, 
                                     correo: registroEncontrado.correo, 
-                                    carrera: registroEncontrado.carrera });
+                                    carrera: registroEncontrado.carrera,
+                                    contraseña: registroEncontrado.contraseña });
                                     this.currentId = registroEncontrado.identificador;
     }
-  } // fin registro
+  } // fin buscar
 
 
   async modificar() {
@@ -192,6 +210,7 @@ export class Consultar2Page implements OnInit {
       edad: this.registroForm.value.edad,
       correo: this.registroForm.value.correo,
       carrera: this.registroForm.value.carrera,
+      contraseña: this.registroForm.value.contraseña,
       identificador: this.currentId
     }
 
@@ -209,8 +228,9 @@ export class Consultar2Page implements OnInit {
     this.edad = "";
     this.correo = "";
     this.carrera = "";
+    this.contraseña = "";
 
-  } // fin modi
+  } // fin modificar
 
   //////////////////////////////////////////////
   ////////fin - este codigo es nuevo/////////

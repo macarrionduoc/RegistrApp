@@ -137,6 +137,22 @@
         >
           Debes ingresar tu carrera
         </div>
+
+        <ion-item>
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input
+            type="text"
+            formControlName="contraseña"
+            placeholder="Ingrese contraseña"
+          ></ion-input>
+        </ion-item>
+        <!--[(ngModel)]="correo"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('contraseña')?.invalid &&  registroForm.get('contraseña')?.touched"
+        >
+          Debes ingresar la contraseña
+        </div>
 <!--
         <ion-grid *ngIf="mensajeExitoso">
           <ion-row>
@@ -173,8 +189,8 @@
               <ion-col>{{individuo.nombre}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>Edad</b></ion-col>
-              <ion-col>{{individuo.edad}}</ion-col>
+              <ion-col><b>Apellido</b></ion-col>
+              <ion-col>{{individuo.apellido}}</ion-col>
             </ion-row>
             <ion-row>
               <ion-col><b>Carrera</b></ion-col>
